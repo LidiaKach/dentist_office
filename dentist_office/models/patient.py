@@ -14,3 +14,9 @@ class Patient(db.Model):
     last_name = db.Column(db.String(120), nullable=False)
     phone = db.Column(db.String(120), nullable=False)
     city = db.Column(db.String(120), nullable=False)
+    street = db.Column(db.String(120), nullable=False)
+
+
+class PatientSchema(ma.Schema):
+    id = fields.Integer()
+    name = fields.String(required=True) 
