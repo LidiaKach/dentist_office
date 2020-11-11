@@ -1,11 +1,12 @@
 from flask import Flask
 
+from dentist_office.config import DevelopmentConfig
 
 
-def create_app(config_filename):
+def create_app(config_class):
     # create and configure the app
     app = Flask(__name__)
-    app.config.from_object(config_filename)
+    app.config.from_object(config_class)
 
     from dentist_office.models import db
     db.init_app(app)
@@ -15,7 +16,7 @@ def create_app(config_filename):
 
     return app
 
-if __name__ == '__main__':
-    app = create_app('dentist_office.config')
-    app.run('0.0.0.0')
 
+if __name__ == '__main__':
+    app = create_app(DevelopmentConfig)
+    app.run('0.0.0.0')
